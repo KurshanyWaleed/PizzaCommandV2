@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:j_pizza_v2/pages/home.dart';
+import 'package:j_pizza_v2/routes/app_router.gr.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(),
-      home: const Home(),
-    );
+    final _app_Router = AppRouter();
+    return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Joes Pizza',
+        routeInformationParser: _app_Router.defaultRouteParser(),
+        routerDelegate: _app_Router.delegate());
   }
 }

@@ -1,5 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:j_pizza_v2/pages/carteScreens/level2_screens/pizza_details.dart';
+import 'package:j_pizza_v2/pages/formulesScreens/level1_screens/formules_list.dart';
+import 'package:j_pizza_v2/pages/formulesScreens/level2_screens/formules_details.dart';
+import 'package:j_pizza_v2/pages/panierScreens/level1_screens/panier_liste.dart';
+import 'package:j_pizza_v2/pages/proScreens/level1_screens/pro_list.dart';
 import '../pages/carteScreens/carte.dart';
 import '../pages/carteScreens/level1_screens/boissan_carousel.dart';
 import '../pages/carteScreens/level1_screens/dessert_carousel.dart';
@@ -13,55 +17,57 @@ import '../pages/home.dart';
 // ! bottom bar Item Route
       [
     // ! Carte Item route
-    AutoRoute(path: '/Carte', name: 'Carte', page: EmptyRouterPage, children: [
-      AutoRoute(
-        name: '',
-        page: Carte,
-      ),
-      AutoRoute(name: 'pizzasCaroussel', page: PizzaCarousel,
-          //  ! Pizza Item Route
-          children: [
+    AutoRoute(
+        path: 'carte',
+        name: 'CarteRouter',
+        page: EmptyRouterPage,
+        children: [
+          AutoRoute(name: 'pizza', page: EmptyRouterPage, children: [
             AutoRoute(
-              name: 'Pizza_Details',
-              page: PizzaDetails,
-            )
+              page: PizzaCarousel,
+              path: '',
+            ),
+            AutoRoute(path: 'pizza_details', page: PizzaDetails)
           ]),
-      AutoRoute(
-        name: 'entree',
-        page: EntreeCarousel,
-      ),
-      AutoRoute(
-        name: 'sandwiches',
-        page: SandwichesCarousel,
-      ),
-      AutoRoute(
-        name: 'boissan',
-        page: BoissanCarousel,
-      ),
-      AutoRoute(
-        name: 'dessert',
-        page: DessertCarousel,
-      )
-    ]),
+          AutoRoute(
+            path: 'entree',
+            page: EntreeCarousel,
+          ),
+          AutoRoute(
+            path: 'sandwiches',
+            page: SandwichesCarousel,
+          ),
+          AutoRoute(
+            path: 'boissan',
+            page: BoissanCarousel,
+          ),
+          AutoRoute(
+            path: 'dessert',
+            page: DessertCarousel,
+          )
+        ]),
 
-    // ? Formules  Item route
+    // ! Formules  Item route
     AutoRoute(
-        path: '/Formules',
-        name: 'Formules',
+        path: 'formules',
+        name: 'formulesRouter',
         page: EmptyRouterPage,
-        children: [AutoRoute(name: '')]),
-    // ? Pro Item route
+        children: [
+          AutoRoute(path: '', page: formulesList),
+          AutoRoute(path: 'f_details', page: FormulesDetails)
+        ]),
+    // ! Pro Item route
     AutoRoute(
-        path: '/Pro',
-        name: 'Pro',
+        path: 'pro',
+        name: 'ProRouter',
         page: EmptyRouterPage,
-        children: [AutoRoute(name: '')]),
-    // ? Panier  Item route
+        children: [AutoRoute(path: '', page: ProList)]),
+    // ! Panier  Item route
     AutoRoute(
-        path: '/Panier',
-        name: 'Panier',
+        path: 'panier',
+        name: 'panierRouter',
         page: EmptyRouterPage,
-        children: [AutoRoute(name: '')])
+        children: [AutoRoute(path: '', page: PanieList)])
   ])
 ])
 class $AppRouter {}
