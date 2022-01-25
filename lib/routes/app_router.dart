@@ -17,35 +17,34 @@ import '../pages/home.dart';
 // ! bottom bar Item Route
       [
     // ! Carte Item route
-    AutoRoute(
-        path: 'carte',
-        name: 'CarteRouter',
-        page: EmptyRouterPage,
-        children: [
-          AutoRoute(name: 'pizza', page: EmptyRouterPage, children: [
-            AutoRoute(
-              page: PizzaCarousel,
-              path: '',
-            ),
-            AutoRoute(path: 'pizza_details', page: PizzaDetails)
-          ]),
-          AutoRoute(
-            path: 'entree',
-            page: EntreeCarousel,
-          ),
-          AutoRoute(
-            path: 'sandwiches',
-            page: SandwichesCarousel,
-          ),
-          AutoRoute(
-            path: 'boissan',
-            page: BoissanCarousel,
-          ),
-          AutoRoute(
-            path: 'dessert',
-            page: DessertCarousel,
-          )
-        ]),
+    AutoRoute(path: 'carte', name: 'CarteRouter', page: Carte, children: [
+      AutoRoute(name: 'PizzaCarousell', page: PizzaCarousel, path: 'pizza'),
+      AutoRoute(
+          name: 'PizzaDetails', page: PizzaDetails, path: 'pizza_details'),
+      // AutoRoute(name: '', page: Carte, children: [
+      //   AutoRoute(
+      //     page: PizzaCarousel,
+      //     path: 'pizza',
+      //   ),
+      //   AutoRoute(path: 'pizza_details', page: PizzaDetails)
+      // ]),
+      AutoRoute(
+        path: 'entree',
+        page: EntreeCarousel,
+      ),
+      AutoRoute(
+        path: 'sandwiches',
+        page: SandwichesCarousel,
+      ),
+      AutoRoute(
+        path: 'boissan',
+        page: BoissanCarousel,
+      ),
+      AutoRoute(
+        path: 'dessert',
+        page: DessertCarousel,
+      )
+    ]),
 
     // ! Formules  Item route
     AutoRoute(

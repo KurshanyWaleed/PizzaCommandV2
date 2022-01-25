@@ -5,6 +5,12 @@ class formulesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return PageView(
+      children: const [
+        Center(
+          child: Text('Formules liste '),
+        )
+      ],
+    );
   }
 }

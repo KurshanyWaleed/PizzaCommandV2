@@ -29,6 +29,9 @@ environment:
 dependencies:
   auto_route: ^3.2.2
   cupertino_icons: ^1.0.2
+  carousel_slider: ^4.0.0
+  flutter_bloc: ^8.0.1
+  bloc: ^8.0.2
   flutter:
     sdk: flutter
 

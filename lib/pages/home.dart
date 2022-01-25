@@ -8,37 +8,53 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      appBarBuilder: (_, tabROuter) => AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text("Joes Pizza"),
+      appBarBuilder: (_, tabRouter) => AppBar(
+        backgroundColor: Colors.white,
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Image(
+            height: 60,
+            image: AssetImage('assets/logo.png'),
+          ),
+        ),
         centerTitle: true,
         leading: const AutoBackButton(),
       ),
-      backgroundColor: Colors.blue,
       routes: const [
         CarteRouter(),
         FormulesRouter(),
+        ProRouter(),
         PanierRouter(),
-        ProRouter()
       ],
       bottomNavigationBuilder: (_, tabsRouter) => BottomNavigationBar(
           selectedItemColor: Colors.red,
           type: BottomNavigationBarType.fixed,
           unselectedItemColor: Colors.blue,
-          selectedFontSize: 10,
-          iconSize: 30,
-          backgroundColor: Colors.red,
+          //selectedFontSize: 10,
+          //iconSize: 30,
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.local_pizza), label: "Carte"),
+                icon:
+                    Image(image: AssetImage('assets/pizza_i.png'), height: 30),
+                label: "Carte"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.local_pizza), label: "Formules"),
+                icon:
+                    Image(image: AssetImage('assets/cola_i2.png'), height: 30),
+                label: "Formules"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.local_pizza), label: "Pro"),
+                icon:
+                    Image(image: AssetImage('assets/discount.png'), height: 30),
+                label: "Promotions"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.local_pizza), label: "Panier"),
+                icon: Image(
+                  image: AssetImage(
+                    'assets/panier.png',
+                  ),
+                  height: 30,
+                ),
+                label: "Panier"),
           ]),
     );
   }
