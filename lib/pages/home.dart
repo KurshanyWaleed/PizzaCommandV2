@@ -18,7 +18,18 @@ class Home extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        leading: const AutoBackButton(),
+        leading: const AutoBackButton(
+          color: Colors.blue,
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: Icon(
+              Icons.home_outlined,
+              color: Colors.blue,
+            ),
+          ),
+        ],
       ),
       routes: const [
         CarteRouter(),

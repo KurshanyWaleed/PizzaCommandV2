@@ -1,13 +1,12 @@
 import "package:flutter/material.dart";
 
-class RecomendPizzaCrad extends StatelessWidget {
-  const RecomendPizzaCrad(
+class RecommendCard extends StatelessWidget {
+  const RecommendCard(
       {Key? key,
       required this.image,
       required this.title,
       required this.details,
       required this.price,
-      //   required this.index,
       required this.onPress})
       : super(key: key);
 
@@ -26,7 +25,7 @@ class RecomendPizzaCrad extends StatelessWidget {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(8), topRight: Radius.circular(8))),
-        child: Container(
+        child: SizedBox(
           height: 1000,
           child: Column(
               mainAxisSize: MainAxisSize.max,

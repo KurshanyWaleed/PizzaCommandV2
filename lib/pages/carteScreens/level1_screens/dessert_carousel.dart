@@ -8,7 +8,7 @@ class DessertCarousel extends StatelessWidget {
     return PageView(
       children: const [
         Center(
-          child: Text('dessert'),
+          child: Text('dessert Caroussel'),
         )
       ],
     );

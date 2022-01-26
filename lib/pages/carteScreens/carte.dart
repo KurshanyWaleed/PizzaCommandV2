@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:j_pizza_v2/widgets/items_card.dart';
 
 class Carte extends StatelessWidget {
-  Carte({Key? key}) : super(key: key);
-  final items = [
-    GetItems(imagePath: "assets/pizza_c.png", index: 4, title: "PIZZAS"),
-    GetItems(imagePath: "assets/entee.png", index: 5, title: "ENTRÉE"),
-    GetItems(imagePath: "assets/sandwichs_c.png", index: 6, title: "SANDWICHE"),
-    GetItems(imagePath: "assets/cola_c.png", index: 7, title: "BOISSAN"),
-    GetItems(imagePath: "assets/dessert_c.png", index: 8, title: "DESSERT"),
+  const Carte({Key? key}) : super(key: key);
+  final items = const [
+    GetItems(imagePath: "assets/pizza_c.png", title: "PIZZAS"),
+    GetItems(imagePath: "assets/entee.png", title: "ENTRÉES"),
+    GetItems(imagePath: "assets/sandwichs_c.png", title: "SANDWICHES"),
+    GetItems(imagePath: "assets/cola_c.png", title: "BOISSANS"),
+    GetItems(imagePath: "assets/dessert_c.png", title: "DESSERTS"),
   ];
 
   @override

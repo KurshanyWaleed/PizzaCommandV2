@@ -5,6 +5,12 @@ class EntreeCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return PageView(
+      children: const [
+        Center(
+          child: Text('Entrée Caroussel'),
+        )
+      ],
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:j_pizza_v2/pages/carteScreens/level2_screens/boissan_details.dart';
 import 'package:j_pizza_v2/pages/carteScreens/level2_screens/pizza_details.dart';
 import 'package:j_pizza_v2/pages/formulesScreens/level1_screens/formules_list.dart';
 import 'package:j_pizza_v2/pages/formulesScreens/level2_screens/formules_details.dart';
@@ -17,34 +18,35 @@ import '../pages/home.dart';
 // ! bottom bar Item Route
       [
     // ! Carte Item route
-    AutoRoute(path: 'carte', name: 'CarteRouter', page: Carte, children: [
-      AutoRoute(name: 'PizzaCarousell', page: PizzaCarousel, path: 'pizza'),
-      AutoRoute(
-          name: 'PizzaDetails', page: PizzaDetails, path: 'pizza_details'),
-      // AutoRoute(name: '', page: Carte, children: [
-      //   AutoRoute(
-      //     page: PizzaCarousel,
-      //     path: 'pizza',
-      //   ),
-      //   AutoRoute(path: 'pizza_details', page: PizzaDetails)
-      // ]),
-      AutoRoute(
-        path: 'entree',
-        page: EntreeCarousel,
-      ),
-      AutoRoute(
-        path: 'sandwiches',
-        page: SandwichesCarousel,
-      ),
-      AutoRoute(
-        path: 'boissan',
-        page: BoissanCarousel,
-      ),
-      AutoRoute(
-        path: 'dessert',
-        page: DessertCarousel,
-      )
-    ]),
+    AutoRoute(
+        path: 'carte',
+        name: 'CarteRouter',
+        page: EmptyRouterPage,
+        children: [
+          AutoRoute(path: '', page: Carte),
+          AutoRoute(
+            path: 'pizza',
+            page: PizzaCarousel,
+          ),
+          AutoRoute(
+            path: 'p_details',
+            page: PizzaDetails,
+          ),
+          AutoRoute(
+            path: 'entree',
+            page: EntreeCarousel,
+          ),
+          AutoRoute(
+            path: 'sandwiches',
+            page: SandwichesCarousel,
+          ),
+          AutoRoute(path: 'boissan', page: BoissanCarousel),
+          AutoRoute(path: 'b_details', page: BoissanDetails),
+          AutoRoute(
+            path: 'dessert',
+            page: DessertCarousel,
+          )
+        ]),
 
     // ! Formules  Item route
     AutoRoute(

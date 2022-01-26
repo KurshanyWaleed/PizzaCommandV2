@@ -1,6 +1,25 @@
 import 'package:flutter/material.dart';
 
+import 'data/boissan.dart';
 import 'data/pizza.dart';
+
+final List<Boissan> boissan = [
+  Boissan(
+      price: 3.5,
+      imagepath: "assets/eau_images/cola15.png",
+      title: "Coca-Cola 1.5L",
+      details: " une boite de cola"),
+  Boissan(
+      price: 1.2,
+      imagepath: "assets/eau_images/eau.png",
+      title: "Eau Sabrine",
+      details: " 1L"),
+  Boissan(
+      price: 1.8,
+      imagepath: "assets/eau_images/cola05.png",
+      title: "Coca-Cola 0.5L",
+      details: " une boite de cola")
+];
 
 final List<Pizza> pizzas = [
   Pizza(
