@@ -13,9 +13,11 @@
 import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/material.dart' as _i18;
 
-import '../../data/boissan.dart' as _i21;
+import '../../data/boissan.dart' as _i23;
 import '../../data/dessert.dart' as _i20;
+import '../../data/entree.dart' as _i21;
 import '../../data/pizza.dart' as _i19;
+import '../../data/sandwiche.dart' as _i22;
 import '../pages/carteScreens/carte.dart' as _i3;
 import '../pages/carteScreens/level1_screens/boissan_carousel.dart' as _i12;
 import '../pages/carteScreens/level1_screens/dessert_carousel.dart' as _i6;
@@ -314,7 +316,7 @@ class EntreeCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.EntreeDetails]
 class EntreeDetails extends _i2.PageRouteInfo<EntreeDetailsArgs> {
-  EntreeDetails({_i18.Key? key, required _i21.Boissan entree})
+  EntreeDetails({_i18.Key? key, required _i21.Entree entree})
       : super(EntreeDetails.name,
             path: ':entree', args: EntreeDetailsArgs(key: key, entree: entree));
 
@@ -326,7 +328,7 @@ class EntreeDetailsArgs {
 
   final _i18.Key? key;
 
-  final _i21.Boissan entree;
+  final _i21.Entree entree;
 
   @override
   String toString() {
@@ -346,7 +348,7 @@ class SandwichesCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i11.SandwichesDetails]
 class SandwichesDetails extends _i2.PageRouteInfo<SandwichesDetailsArgs> {
-  SandwichesDetails({_i18.Key? key, required _i19.Pizza sandwich})
+  SandwichesDetails({_i18.Key? key, required _i22.Sandwich sandwich})
       : super(SandwichesDetails.name,
             path: ':sandwiches',
             args: SandwichesDetailsArgs(key: key, sandwich: sandwich));
@@ -359,7 +361,7 @@ class SandwichesDetailsArgs {
 
   final _i18.Key? key;
 
-  final _i19.Pizza sandwich;
+  final _i22.Sandwich sandwich;
 
   @override
   String toString() {
@@ -378,7 +380,7 @@ class BoissanCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i13.BoissanDetails]
 class BoissanDetails extends _i2.PageRouteInfo<BoissanDetailsArgs> {
-  BoissanDetails({_i18.Key? key, required _i21.Boissan boissan})
+  BoissanDetails({_i18.Key? key, required _i23.Boissan boissan})
       : super(BoissanDetails.name,
             path: ':boissan',
             args: BoissanDetailsArgs(key: key, boissan: boissan));
@@ -391,7 +393,7 @@ class BoissanDetailsArgs {
 
   final _i18.Key? key;
 
-  final _i21.Boissan boissan;
+  final _i23.Boissan boissan;
 
   @override
   String toString() {

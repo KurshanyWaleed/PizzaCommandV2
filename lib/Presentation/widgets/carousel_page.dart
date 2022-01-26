@@ -32,6 +32,8 @@ class CarousselWidget extends StatelessWidget {
           items: dataList
               .map((element) => InkWell(
                     onTap: () {
+                      print(element);
+
                       switch (goToThisRoute) {
                         case "BoissanDetails":
                           context.router.push(BoissanDetails(boissan: element));
