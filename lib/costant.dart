@@ -1,9 +1,81 @@
 import 'package:flutter/material.dart';
+import 'package:j_pizza_v2/data/dessert.dart';
+import 'package:j_pizza_v2/data/entree.dart';
+import 'package:j_pizza_v2/data/sandwiche.dart';
 
 import 'data/boissan.dart';
 import 'data/pizza.dart';
 
-final List<Boissan> boissan = [
+final List<Entree> entrees = [
+  Entree(
+      price: 3.5,
+      imagepath: "assets/entree_images/soupe.png",
+      title: "Soupe",
+      details: " soupe"),
+  Entree(
+      price: 3.5,
+      imagepath: "assets/entree_images/oeufs_durs_farcis_au_saumon.png",
+      title: "Oeufs au Saumon",
+      details: "oeufs durs farcis au saumon"),
+  Entree(
+      price: 2.8,
+      imagepath: "assets/entree_images/entree_foid.png",
+      title: "Entrée Froid",
+      details: "entrée froid"),
+];
+
+final List<Dessert> desserts = [
+  Dessert(
+      price: 13.5,
+      imagepath: "assets/dessert_images/fudge_ice.png",
+      title: "Fudge Ice ",
+      details: " fudge ice"),
+  Dessert(
+      price: 7.5,
+      imagepath: "assets/dessert_images/malaysian_dessert.png",
+      title: "Malaysian Dessert",
+      details: " malaysian dessert"),
+  Dessert(
+      price: 2.8,
+      imagepath: "assets/dessert_images/oreo_chocolate.png",
+      title: "Oreo Chocolate",
+      details: "oreo Chocolate"),
+  Dessert(
+      price: 3.5,
+      imagepath: "assets/dessert_images/potluck.png",
+      title: "Potluck Dessert",
+      details: "potluck dessert"),
+];
+
+final List<Sandwich> sandwiches = [
+  Sandwich(
+      price: 13.5,
+      imagepath: "assets/sandwiches_images/deli.png",
+      title: "Deli Sandwiche",
+      details: " deli sandwiche"),
+  Sandwich(
+      price: 7.5,
+      imagepath: "assets/sandwiches_images/parma.png",
+      title: "Parma Sandwich",
+      details: " Parma Sandwich"),
+  Sandwich(
+      price: 10,
+      imagepath: "assets/sandwiches_images/technomic_burger.png",
+      title: " Hot Technomic Burger ",
+      details: "Hot Technomic Burger 🌶️"),
+  Sandwich(
+      price: 7.5,
+      imagepath: "assets/sandwiches_images/technomic_s.png",
+      title: "Technomic Sandwich",
+      details: "technomic sandwich"),
+  Sandwich(
+      price: 7,
+      imagepath: "assets/sandwiches_images/turkey_muffuletto.png",
+      title: "Turkey Muffuletto",
+      details: "turkey muffuletto"),
+];
+
+final List<Boissan> boissans = [
   Boissan(
       price: 3.5,
       imagepath: "assets/eau_images/cola15.png",

@@ -1,9 +1,9 @@
-class Pizza {
+class Dessert {
   final String imagepath;
   final String title;
   final String details;
   double price;
-  Pizza({
+  Dessert({
     required this.price,
     required this.imagepath,
     required this.title,
