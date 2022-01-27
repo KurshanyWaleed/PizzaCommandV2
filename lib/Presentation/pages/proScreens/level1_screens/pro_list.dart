@@ -5,12 +5,22 @@ class ProList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: const [
-        Center(
-          child: Text('Promotions'),
-        )
-      ],
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/congratulations.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      height: MediaQuery.of(context).size.height,
+      child: const Center(
+          child: Text(
+        "Aucune promotion pour l'instant ! \n 🥺 ",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+      )),
     );
   }
 }

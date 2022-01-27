@@ -1,8 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:j_pizza_v2/data/boissan.dart';
 import 'package:j_pizza_v2/data/entree.dart';
-
 import '../../page_details.dart';
 
 class EntreeDetails extends StatelessWidget {
@@ -16,6 +14,5 @@ class EntreeDetails extends StatelessWidget {
         imagePath: entree.imagepath,
         details: entree.details,
         price: entree.price);
-    ;
   }
 }
