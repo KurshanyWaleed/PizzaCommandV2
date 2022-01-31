@@ -25,6 +25,7 @@ class BasketCubit2 extends Cubit<BasketStateV2> {
   }
 
   void onEncreaseQuantity(dynamic obj, int howMatch) {
+    print("running");
     BasketStateV2.price += obj.price;
 
     BasketStateV2.basketList.update(obj, (value) {

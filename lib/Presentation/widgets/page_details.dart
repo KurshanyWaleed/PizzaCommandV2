@@ -38,7 +38,7 @@ class DetailsPage extends StatelessWidget {
                           child: Text(object.title,
                               style: const TextStyle(
                                   color: Colors.red,
-                                  fontSize: 30,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold)),
                         ),
                       ),
@@ -48,7 +48,7 @@ class DetailsPage extends StatelessWidget {
                           child: Text(
                             object.price.toString() + " DT",
                             style: const TextStyle(
-                                fontSize: 30,
+                                fontSize: 20,
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold),
                           ),

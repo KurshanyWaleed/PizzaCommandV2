@@ -84,7 +84,7 @@ class BasketItem extends StatelessWidget {
                   Center(
                     child: Text(element.value.toString(),
                         style:
-                            const TextStyle(color: Colors.white, fontSize: 30)),
+                            const TextStyle(color: Colors.white, fontSize: 25)),
                   ),
                   const SizedBox(
                     width: 10,
