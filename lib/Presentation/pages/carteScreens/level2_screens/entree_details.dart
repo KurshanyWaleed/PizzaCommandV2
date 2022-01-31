@@ -1,7 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:j_pizza_v2/data/entree.dart';
-import '../../page_details.dart';
+import '../../../widgets/page_details.dart';
 
 class EntreeDetails extends StatelessWidget {
   const EntreeDetails({Key? key, required this.entree}) : super(key: key);
@@ -10,9 +10,7 @@ class EntreeDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DetailsPage(
-        title: entree.title,
-        imagePath: entree.imagepath,
-        details: entree.details,
-        price: entree.price);
+      object: entree,
+    );
   }
 }

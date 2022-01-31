@@ -84,7 +84,7 @@ final List<Boissan> boissans = [
   Boissan(
       price: 1.2,
       imagepath: "assets/eau_images/eau.png",
-      title: "Eau Sabrine",
+      title: "Eau Safia",
       details: " 1L"),
   Boissan(
       price: 1.8,

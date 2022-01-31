@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:j_pizza_v2/Presentation/routes/app_router.gr.dart';
+import 'package:badges/badges.dart';
+import 'package:j_pizza_v2/BolC/cubitBasket/basket_state.dart';
+import 'package:j_pizza_v2/BolC/cubitBasket/basket_cubit.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -45,25 +49,44 @@ class Home extends StatelessWidget {
           //iconSize: 30,
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
-          items: const [
-            BottomNavigationBarItem(
+          items: [
+            const BottomNavigationBarItem(
                 icon:
                     Image(image: AssetImage('assets/pizza_i.png'), height: 30),
                 label: "Carte"),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon:
                     Image(image: AssetImage('assets/cola_i2.png'), height: 30),
                 label: "Formules"),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon:
                     Image(image: AssetImage('assets/discount.png'), height: 30),
                 label: "Promotions"),
             BottomNavigationBarItem(
-                icon: Image(
-                  image: AssetImage(
-                    'assets/panier.png',
-                  ),
-                  height: 30,
+                icon: BlocBuilder<BasketCubit2, BasketStateV2>(
+                  builder: (context, state) {
+                    return BasketStateV2.basketList.isEmpty
+                        ? const Image(
+                            image: AssetImage(
+                              'assets/panier.png',
+                            ),
+                            height: 30,
+                          )
+                        : Container(
+                            child: Badge(
+                              badgeContent: Text(
+                                BasketStateV2.basketList.length.toString(),
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              child: const Image(
+                                image: AssetImage(
+                                  'assets/panier.png',
+                                ),
+                                height: 30,
+                              ),
+                            ),
+                          );
+                  },
                 ),
                 label: "Panier"),
           ]),

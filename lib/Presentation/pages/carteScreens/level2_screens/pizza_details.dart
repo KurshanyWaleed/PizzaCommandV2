@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:j_pizza_v2/Presentation/widgets/add_to_panier.dart';
+import 'package:j_pizza_v2/Presentation/widgets/image_radio.dart';
 import 'package:j_pizza_v2/Presentation/widgets/optionsx4.dart';
 import 'package:j_pizza_v2/Presentation/widgets/optionsx6.dart';
 import 'package:j_pizza_v2/data/pizza.dart';
@@ -149,87 +151,8 @@ class _PizzaDetailsState extends State<PizzaDetails> {
                       ),
                     )),
               )),
-          Positioned(
-            bottom: 0,
-            child: Container(
-                color: Colors.red,
-                width: MediaQuery.of(context).size.width,
-                height: 50,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.red,
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(50)),
-                    ),
-                    const Text(
-                      "0",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30),
-                    ),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: const Icon(
-                          Icons.remove,
-                          color: Colors.red,
-                        )),
-                    InkWell(
-                      focusColor: Colors.red,
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: const Text(
-                          "Ajouter au Panier",
-                          style: TextStyle(
-                              color: Colors.red, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-          ),
         ],
       ),
     );
-  }
-}
-
-class ImageRadio extends StatefulWidget {
-  const ImageRadio({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-  final double size;
-
-  @override
-  State<ImageRadio> createState() => _ImageRadioState();
-}
-
-class _ImageRadioState extends State<ImageRadio> {
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          setState(() {});
-        },
-        child: Image(
-          image: const AssetImage(
-            'assets/pizza.png',
-          ),
-          color: Colors.white.withOpacity(0.2),
-          colorBlendMode: BlendMode.modulate,
-          width: widget.size,
-        ));
   }
 }
