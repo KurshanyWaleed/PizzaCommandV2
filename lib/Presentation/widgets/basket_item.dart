@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:j_pizza_v2/BolC/cubit/paniercounter_cubit.dart';
-
 import 'package:j_pizza_v2/BolC/cubitBasket/basket_cubit.dart';
 
 class BasketItem extends StatelessWidget {
@@ -64,7 +62,7 @@ class BasketItem extends StatelessWidget {
                     onTap: () {
                       BlocProvider.of<BasketCubit2>(context).onEncreaseQuantity(
                           element.key,
-                          element.value <= 1 ? 1 : element.value + 1);
+                          element.value < 0 ? 1 : element.value + 1);
                       // BlocProvider.of<PaniercounterCubit>(context).inc();
                     },
                     child: Container(

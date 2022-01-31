@@ -1,7 +1,10 @@
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:j_pizza_v2/BolC/cubit/paniercounter_cubit.dart';
 import 'package:j_pizza_v2/BolC/cubitBasket/basket_cubit.dart';
+
+import 'package:j_pizza_v2/Presentation/routes/app_router.gr.dart';
 
 class AddToPanier extends StatelessWidget {
   const AddToPanier({
@@ -54,7 +57,13 @@ class AddToPanier extends StatelessWidget {
                   BlocProvider.of<BasketCubit2>(context)
                       .addToBasket(obg, state);
                   BlocProvider.of<PaniercounterCubit>(context).reset();
-                  // Navigator.pop(context);
+                  context.router.popUntil((route) => route.isFirst);
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('élément ajouté'),
+                    duration: Duration(milliseconds: 500),
+                    dismissDirection: DismissDirection.horizontal,
+                    backgroundColor: Colors.blue,
+                  ));
                 },
                 child: Container(
                   padding: const EdgeInsets.all(8),
