@@ -1,4 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:j_pizza_v2/Presentation/dynamicPage/carousel.dart';
+import 'package:j_pizza_v2/Presentation/dynamicPage/details.dart';
+import 'package:j_pizza_v2/Presentation/dynamicPage/validation.dart';
 import 'package:j_pizza_v2/Presentation/pages/carteScreens/level2_screens/boissan_details.dart';
 import 'package:j_pizza_v2/Presentation/pages/carteScreens/level2_screens/dessert_details.dart';
 import 'package:j_pizza_v2/Presentation/pages/carteScreens/level2_screens/entree_details.dart';
@@ -67,8 +71,21 @@ import '../pages/home.dart';
         name: 'formulesRouter',
         page: EmptyRouterPage,
         children: [
-          AutoRoute(path: '', page: formulesList),
-          AutoRoute(path: 'f_details', page: FormulesDetails)
+          AutoRoute(path: '', page: FormulesList),
+          AutoRoute(
+              path: 'f_details',
+              page: EmptyRouterPage,
+              name: 'formuledetailsRouter',
+              children: [
+                AutoRoute(page: FormulesDetails, path: ''),
+                AutoRoute(page: CarouselD, path: 'carouselD'),
+                AutoRoute(page: DetailsD, path: 'cetailsD'),
+                AutoRoute(page: Validation, path: 'validationD'),
+              ]),
+
+          // AutoRoute(path: 'carousel', page: CarouselD),
+          // AutoRoute(path: 'details', page: DetailsD),
+          // AutoRoute(path: 'validation', page: Validation)
         ]),
     // ! Pro Item route
     AutoRoute(

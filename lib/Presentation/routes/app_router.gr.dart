@@ -11,13 +11,17 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/material.dart' as _i18;
+import 'package:flutter/cupertino.dart' as _i22;
+import 'package:flutter/material.dart' as _i21;
 
-import '../../data/boissan.dart' as _i23;
-import '../../data/dessert.dart' as _i20;
-import '../../data/entree.dart' as _i21;
-import '../../data/pizza.dart' as _i19;
-import '../../data/sandwiche.dart' as _i22;
+import '../../data/boissan.dart' as _i27;
+import '../../data/dessert.dart' as _i24;
+import '../../data/entree.dart' as _i25;
+import '../../data/pizza.dart' as _i23;
+import '../../data/sandwiche.dart' as _i26;
+import '../dynamicPage/carousel.dart' as _i16;
+import '../dynamicPage/details.dart' as _i17;
+import '../dynamicPage/validation.dart' as _i18;
 import '../pages/carteScreens/carte.dart' as _i3;
 import '../pages/carteScreens/level1_screens/boissan_carousel.dart' as _i12;
 import '../pages/carteScreens/level1_screens/dessert_carousel.dart' as _i6;
@@ -32,11 +36,11 @@ import '../pages/carteScreens/level2_screens/sandwiches_details.dart' as _i11;
 import '../pages/formulesScreens/level1_screens/formules_list.dart' as _i14;
 import '../pages/formulesScreens/level2_screens/formules_details.dart' as _i15;
 import '../pages/home.dart' as _i1;
-import '../pages/panierScreens/level1_screens/panier_liste.dart' as _i17;
-import '../pages/proScreens/level1_screens/pro_list.dart' as _i16;
+import '../pages/panierScreens/level1_screens/panier_liste.dart' as _i20;
+import '../pages/proScreens/level1_screens/pro_list.dart' as _i19;
 
 class AppRouter extends _i2.RootStackRouter {
-  AppRouter([_i18.GlobalKey<_i18.NavigatorState>? navigatorKey])
+  AppRouter([_i21.GlobalKey<_i21.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -66,8 +70,10 @@ class AppRouter extends _i2.RootStackRouter {
           routeData: routeData, child: const _i3.Carte());
     },
     PizzaCarousel.name: (routeData) {
+      final args = routeData.argsAs<PizzaCarouselArgs>();
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.PizzaCarousel());
+          routeData: routeData,
+          child: _i4.PizzaCarousel(key: args.key, fromBox: args.fromBox));
     },
     PizzaDetails.name: (routeData) {
       final args = routeData.argsAs<PizzaDetailsArgs>();
@@ -118,19 +124,42 @@ class AppRouter extends _i2.RootStackRouter {
     },
     FormulesList.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i14.formulesList());
+          routeData: routeData, child: const _i14.FormulesList());
+    },
+    FormuledetailsRouter.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i2.EmptyRouterPage());
     },
     FormulesDetails.name: (routeData) {
+      final args = routeData.argsAs<FormulesDetailsArgs>();
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i15.FormulesDetails());
+          routeData: routeData,
+          child:
+              _i15.FormulesDetails(key: args.key, checkedBox: args.checkedBox));
+    },
+    CarouselD.name: (routeData) {
+      final args = routeData.argsAs<CarouselDArgs>();
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i16.CarouselD(key: args.key, data: args.data));
+    },
+    DetailsD.name: (routeData) {
+      final args = routeData.argsAs<DetailsDArgs>();
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i17.DetailsD(key: args.key, object: args.object));
+    },
+    Validation.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i18.Validation());
     },
     ProList.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i16.ProList());
+          routeData: routeData, child: const _i19.ProList());
     },
     PanieList.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i17.PanieList());
+          routeData: routeData, child: const _i20.PanieList());
     }
   };
 
@@ -169,8 +198,20 @@ class AppRouter extends _i2.RootStackRouter {
               children: [
                 _i2.RouteConfig(FormulesList.name,
                     path: '', parent: FormulesRouter.name),
-                _i2.RouteConfig(FormulesDetails.name,
-                    path: 'f_details', parent: FormulesRouter.name)
+                _i2.RouteConfig(FormuledetailsRouter.name,
+                    path: 'f_details',
+                    parent: FormulesRouter.name,
+                    children: [
+                      _i2.RouteConfig(FormulesDetails.name,
+                          path: '', parent: FormuledetailsRouter.name),
+                      _i2.RouteConfig(CarouselD.name,
+                          path: 'carouselD', parent: FormuledetailsRouter.name),
+                      _i2.RouteConfig(DetailsD.name,
+                          path: 'cetailsD', parent: FormuledetailsRouter.name),
+                      _i2.RouteConfig(Validation.name,
+                          path: 'validationD',
+                          parent: FormuledetailsRouter.name)
+                    ])
               ]),
           _i2.RouteConfig(ProRouter.name,
               path: 'pro',
@@ -244,16 +285,31 @@ class Carte extends _i2.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.PizzaCarousel]
-class PizzaCarousel extends _i2.PageRouteInfo<void> {
-  const PizzaCarousel() : super(PizzaCarousel.name, path: 'pizza');
+class PizzaCarousel extends _i2.PageRouteInfo<PizzaCarouselArgs> {
+  PizzaCarousel({_i22.Key? key, required bool fromBox})
+      : super(PizzaCarousel.name,
+            path: 'pizza', args: PizzaCarouselArgs(key: key, fromBox: fromBox));
 
   static const String name = 'PizzaCarousel';
+}
+
+class PizzaCarouselArgs {
+  const PizzaCarouselArgs({this.key, required this.fromBox});
+
+  final _i22.Key? key;
+
+  final bool fromBox;
+
+  @override
+  String toString() {
+    return 'PizzaCarouselArgs{key: $key, fromBox: $fromBox}';
+  }
 }
 
 /// generated route for
 /// [_i5.PizzaDetails]
 class PizzaDetails extends _i2.PageRouteInfo<PizzaDetailsArgs> {
-  PizzaDetails({_i18.Key? key, required _i19.Pizza pizza})
+  PizzaDetails({_i22.Key? key, required _i23.Pizza pizza})
       : super(PizzaDetails.name,
             path: ':pizza', args: PizzaDetailsArgs(key: key, pizza: pizza));
 
@@ -263,9 +319,9 @@ class PizzaDetails extends _i2.PageRouteInfo<PizzaDetailsArgs> {
 class PizzaDetailsArgs {
   const PizzaDetailsArgs({this.key, required this.pizza});
 
-  final _i18.Key? key;
+  final _i22.Key? key;
 
-  final _i19.Pizza pizza;
+  final _i23.Pizza pizza;
 
   @override
   String toString() {
@@ -284,7 +340,7 @@ class DessertCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i7.DessertDetails]
 class DessertDetails extends _i2.PageRouteInfo<DessertDetailsArgs> {
-  DessertDetails({_i18.Key? key, required _i20.Dessert dessert})
+  DessertDetails({_i22.Key? key, required _i24.Dessert dessert})
       : super(DessertDetails.name,
             path: ':dessert',
             args: DessertDetailsArgs(key: key, dessert: dessert));
@@ -295,9 +351,9 @@ class DessertDetails extends _i2.PageRouteInfo<DessertDetailsArgs> {
 class DessertDetailsArgs {
   const DessertDetailsArgs({this.key, required this.dessert});
 
-  final _i18.Key? key;
+  final _i22.Key? key;
 
-  final _i20.Dessert dessert;
+  final _i24.Dessert dessert;
 
   @override
   String toString() {
@@ -316,7 +372,7 @@ class EntreeCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.EntreeDetails]
 class EntreeDetails extends _i2.PageRouteInfo<EntreeDetailsArgs> {
-  EntreeDetails({_i18.Key? key, required _i21.Entree entree})
+  EntreeDetails({_i22.Key? key, required _i25.Entree entree})
       : super(EntreeDetails.name,
             path: ':entree', args: EntreeDetailsArgs(key: key, entree: entree));
 
@@ -326,9 +382,9 @@ class EntreeDetails extends _i2.PageRouteInfo<EntreeDetailsArgs> {
 class EntreeDetailsArgs {
   const EntreeDetailsArgs({this.key, required this.entree});
 
-  final _i18.Key? key;
+  final _i22.Key? key;
 
-  final _i21.Entree entree;
+  final _i25.Entree entree;
 
   @override
   String toString() {
@@ -348,7 +404,7 @@ class SandwichesCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i11.SandwichesDetails]
 class SandwichesDetails extends _i2.PageRouteInfo<SandwichesDetailsArgs> {
-  SandwichesDetails({_i18.Key? key, required _i22.Sandwich sandwich})
+  SandwichesDetails({_i22.Key? key, required _i26.Sandwich sandwich})
       : super(SandwichesDetails.name,
             path: ':sandwiches',
             args: SandwichesDetailsArgs(key: key, sandwich: sandwich));
@@ -359,9 +415,9 @@ class SandwichesDetails extends _i2.PageRouteInfo<SandwichesDetailsArgs> {
 class SandwichesDetailsArgs {
   const SandwichesDetailsArgs({this.key, required this.sandwich});
 
-  final _i18.Key? key;
+  final _i22.Key? key;
 
-  final _i22.Sandwich sandwich;
+  final _i26.Sandwich sandwich;
 
   @override
   String toString() {
@@ -380,7 +436,7 @@ class BoissanCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i13.BoissanDetails]
 class BoissanDetails extends _i2.PageRouteInfo<BoissanDetailsArgs> {
-  BoissanDetails({_i18.Key? key, required _i23.Boissan boissan})
+  BoissanDetails({_i22.Key? key, required _i27.Boissan boissan})
       : super(BoissanDetails.name,
             path: ':boissan',
             args: BoissanDetailsArgs(key: key, boissan: boissan));
@@ -391,9 +447,9 @@ class BoissanDetails extends _i2.PageRouteInfo<BoissanDetailsArgs> {
 class BoissanDetailsArgs {
   const BoissanDetailsArgs({this.key, required this.boissan});
 
-  final _i18.Key? key;
+  final _i22.Key? key;
 
-  final _i23.Boissan boissan;
+  final _i27.Boissan boissan;
 
   @override
   String toString() {
@@ -402,7 +458,7 @@ class BoissanDetailsArgs {
 }
 
 /// generated route for
-/// [_i14.formulesList]
+/// [_i14.FormulesList]
 class FormulesList extends _i2.PageRouteInfo<void> {
   const FormulesList() : super(FormulesList.name, path: '');
 
@@ -410,15 +466,95 @@ class FormulesList extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i2.EmptyRouterPage]
+class FormuledetailsRouter extends _i2.PageRouteInfo<void> {
+  const FormuledetailsRouter({List<_i2.PageRouteInfo>? children})
+      : super(FormuledetailsRouter.name,
+            path: 'f_details', initialChildren: children);
+
+  static const String name = 'FormuledetailsRouter';
+}
+
+/// generated route for
 /// [_i15.FormulesDetails]
-class FormulesDetails extends _i2.PageRouteInfo<void> {
-  const FormulesDetails() : super(FormulesDetails.name, path: 'f_details');
+class FormulesDetails extends _i2.PageRouteInfo<FormulesDetailsArgs> {
+  FormulesDetails({_i22.Key? key, required dynamic checkedBox})
+      : super(FormulesDetails.name,
+            path: '',
+            args: FormulesDetailsArgs(key: key, checkedBox: checkedBox));
 
   static const String name = 'FormulesDetails';
 }
 
+class FormulesDetailsArgs {
+  const FormulesDetailsArgs({this.key, required this.checkedBox});
+
+  final _i22.Key? key;
+
+  final dynamic checkedBox;
+
+  @override
+  String toString() {
+    return 'FormulesDetailsArgs{key: $key, checkedBox: $checkedBox}';
+  }
+}
+
 /// generated route for
-/// [_i16.ProList]
+/// [_i16.CarouselD]
+class CarouselD extends _i2.PageRouteInfo<CarouselDArgs> {
+  CarouselD({_i22.Key? key, required List<dynamic> data})
+      : super(CarouselD.name,
+            path: 'carouselD', args: CarouselDArgs(key: key, data: data));
+
+  static const String name = 'CarouselD';
+}
+
+class CarouselDArgs {
+  const CarouselDArgs({this.key, required this.data});
+
+  final _i22.Key? key;
+
+  final List<dynamic> data;
+
+  @override
+  String toString() {
+    return 'CarouselDArgs{key: $key, data: $data}';
+  }
+}
+
+/// generated route for
+/// [_i17.DetailsD]
+class DetailsD extends _i2.PageRouteInfo<DetailsDArgs> {
+  DetailsD({_i22.Key? key, required dynamic object})
+      : super(DetailsD.name,
+            path: 'cetailsD', args: DetailsDArgs(key: key, object: object));
+
+  static const String name = 'DetailsD';
+}
+
+class DetailsDArgs {
+  const DetailsDArgs({this.key, required this.object});
+
+  final _i22.Key? key;
+
+  final dynamic object;
+
+  @override
+  String toString() {
+    return 'DetailsDArgs{key: $key, object: $object}';
+  }
+}
+
+/// generated route for
+/// [_i18.Validation]
+class Validation extends _i2.PageRouteInfo<void> {
+  const Validation() : super(Validation.name, path: 'validationD');
+
+  static const String name = 'Validation';
+}
+
+/// generated route for
+/// [_i19.ProList]
 class ProList extends _i2.PageRouteInfo<void> {
   const ProList() : super(ProList.name, path: '');
 
@@ -426,7 +562,7 @@ class ProList extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i17.PanieList]
+/// [_i20.PanieList]
 class PanieList extends _i2.PageRouteInfo<void> {
   const PanieList() : super(PanieList.name, path: '');
 

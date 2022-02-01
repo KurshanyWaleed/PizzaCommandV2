@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:j_pizza_v2/Presentation/routes/app_router.gr.dart';
 
-import 'BolC/cubit/paniercounter_cubit.dart';
+import 'BolC/Basketcubit/paniercounter_cubit.dart';
+import 'BolC/boxCubit/boxcubit_cubit.dart';
 import 'BolC/cubitBasket/basket_cubit.dart';
 
 void main() {
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => PaniercounterCubit(),
-        )
+        ),
+        BlocProvider(create: (context) => BoxCubit())
       ],
       child: MaterialApp.router(
           debugShowCheckedModeBanner: false,

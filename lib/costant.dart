@@ -6,6 +6,46 @@ import 'package:j_pizza_v2/data/sandwiche.dart';
 import 'data/boissan.dart';
 import 'data/pizza.dart';
 
+const kduoBox = "Duo BOX";
+const kfreindSbox = "Freind's BOX";
+const kboxXbox = "BOX x BOX";
+
+Map<dynamic, int> duobox = {Pizza: 2, Sandwich: 2, Boissan: 1};
+Map<dynamic, int> freindsBOX = {Pizza: 2, Sandwich: 2, Boissan: 1};
+Map<dynamic, int> boxxbox = {Pizza: 3, Sandwich: 2, Boissan: 1};
+Map<int, dynamic> box = {
+  0: [
+    Pizza(
+        details: "testPizza1",
+        price: 12000,
+        imagepath: "assets/pizza_c.png",
+        title: "test"),
+    Pizza(
+        details: "test",
+        price: 12000,
+        imagepath: "assets/pizza_c.png",
+        title: "test")
+  ],
+  1: [
+    Sandwich(
+        details: "testSandwich1",
+        price: 12000,
+        imagepath: "assets/sandwiches_images/deli.png",
+        title: "testSandwich1"),
+    Sandwich(
+        details: "testSandwich2",
+        price: 12000,
+        imagepath: "assets/sandwiches_images/technomic_s.png",
+        title: "testSandwich2")
+  ],
+  3: Boissan(
+    details: "testBoissan",
+    price: 10000,
+    title: "testboissan",
+    imagepath: "assets/eau_images/cola15.png",
+  )
+};
+
 final List<Entree> entrees = [
   Entree(
       price: 3.5,
@@ -157,7 +197,3 @@ const MaterialColor white = MaterialColor(
     900: Color(0xFFFFFFFF),
   },
 );
-
-int navbaritems = 4;
-int carteItem = 8;
-int detailsItem = 14;

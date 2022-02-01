@@ -1,5 +1,10 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:j_pizza_v2/BolC/boxCubit/boxcubit_cubit.dart';
+import 'package:j_pizza_v2/Presentation/routes/app_router.gr.dart';
+
 import 'package:j_pizza_v2/Presentation/widgets/add_to_panier.dart';
 import 'package:j_pizza_v2/Presentation/widgets/image_radio.dart';
 import 'package:j_pizza_v2/Presentation/widgets/optionsx4.dart';
@@ -137,20 +142,54 @@ class _PizzaDetailsState extends State<PizzaDetails> {
               ),
             ),
           ),
+          //!here
           Positioned(
-              top: 0,
-              child: Center(
-                child: Container(
-                    height: 50,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(color: Colors.blue),
-                    child: Center(
-                      child: Text(
-                        "Total : " + pza.price.toString(),
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    )),
-              )),
+            height: 50,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.blue),
+                child: const Text('Suivant '),
+                onPressed: () {
+                  context.navigateTo(PizzaCarousel(fromBox: true));
+                  BlocProvider.of<BoxCubit>(context).onChangeBoxArticle(2);
+                  BlocProvider.of<BoxCubit>(context).addingTotheBasket(pza);
+                }),
+          ),
+          BlocBuilder<BoxCubit, BoxState>(
+            builder: (context, state) {
+              return !state.isBox
+                  ? Positioned(
+                      top: 0,
+                      child: Center(
+                        child: Container(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: const BoxDecoration(color: Colors.blue),
+                            child: Center(
+                              child: Text(
+                                "Total : " + pza.price.toString(),
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            )),
+                      ))
+                  : Positioned(
+                      top: 0,
+                      child: Center(
+                        child: Container(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: const BoxDecoration(color: Colors.blue),
+                            child: const Center(
+                              child: Text(
+                                "Total : 55.000 DT",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            )),
+                      ));
+            },
+          ),
         ],
       ),
     );

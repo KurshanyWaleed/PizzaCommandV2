@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:j_pizza_v2/BolC/cubit/paniercounter_cubit.dart';
+import 'package:j_pizza_v2/BolC/Basketcubit/paniercounter_cubit.dart';
+
 import 'package:j_pizza_v2/BolC/cubitBasket/basket_cubit.dart';
 
 class BasketItem extends StatelessWidget {

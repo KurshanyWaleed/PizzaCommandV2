@@ -1,7 +1,8 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:j_pizza_v2/BolC/cubit/paniercounter_cubit.dart';
+import 'package:j_pizza_v2/BolC/Basketcubit/paniercounter_cubit.dart';
+
 import 'package:j_pizza_v2/BolC/cubitBasket/basket_cubit.dart';
 
 import 'package:j_pizza_v2/Presentation/routes/app_router.gr.dart';
@@ -61,8 +62,8 @@ class AddToPanier extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Center(
                         child: Container(
-                      margin: EdgeInsets.only(top: 20),
-                      child: Image(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: const Image(
                         image: AssetImage('assets/here3.gif'),
                         width: 200,
                       ),

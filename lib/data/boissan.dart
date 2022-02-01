@@ -4,6 +4,7 @@ class Boissan {
   final String details;
   double price;
   List<Boissan> bListe = [];
+
   Boissan({
     required this.price,
     required this.imagepath,

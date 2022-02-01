@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:j_pizza_v2/BolC/boxCubit/boxcubit_cubit.dart';
 import 'package:j_pizza_v2/Presentation/routes/app_router.gr.dart';
 import 'package:badges/badges.dart';
 import 'package:j_pizza_v2/BolC/cubitBasket/basket_state.dart';
@@ -14,11 +17,21 @@ class Home extends StatelessWidget {
     return AutoTabsScaffold(
       appBarBuilder: (_, tabRouter) => AppBar(
         backgroundColor: Colors.white,
-        title: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Image(
-            height: 60,
-            image: AssetImage('assets/logo.png'),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: BlocBuilder<BoxCubit, BoxState>(
+            builder: (context, state) {
+              print(state.articleIndex.toString());
+              return state.isBox
+                  ? Text(
+                      "Sélectionner Artice " + state.articleIndex.toString(),
+                      style: const TextStyle(color: Colors.blue),
+                    )
+                  : const Image(
+                      height: 60,
+                      image: AssetImage('assets/logo.png'),
+                    );
+            },
           ),
         ),
         centerTitle: true,

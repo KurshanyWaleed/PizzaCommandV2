@@ -9,9 +9,18 @@ class Pizza {
     required this.title,
     required this.details,
   });
-
-  // double updatePIzzaPrice(double value) {
-  //   value > 0 ? this.price = this.price + 2 : this.price = this.price - 2;
-  //   return this.price;
-  // }
+  Map<String, bool> ingredirnts = {
+    "champignions": true,
+    "mozzarella": true,
+    "jombon": true,
+    "sauseTomate": true
+  };
+  Map<String, bool> supplements = {
+    "mozzarellaSpecial": false,
+    "pepperoni": false,
+    "jombondedinde": false,
+    "poulet": false,
+    "thon": false,
+    "tommedebizert": false
+  };
 }
