@@ -8,16 +8,17 @@ class BasketCubit2 extends Cubit<BasketStateV2> {
   BasketCubit2() : super(BasketStateV2());
 
   void addToBasket(dynamic obj, int howMatch) {
-    BasketStateV2.price += obj.price * howMatch;
     if (BasketStateV2.basketList.containsKey(obj)) {
+      BasketStateV2.price -= obj.price * BasketStateV2.basketList[obj];
       BasketStateV2.basketList.update(obj, (value) {
         return howMatch;
       });
-      emit(BasketStateV2());
     } else {
+      // when new item joint the Map
       BasketStateV2.basketList[obj] = howMatch;
-      emit(BasketStateV2());
     }
+    BasketStateV2.price += obj.price * howMatch;
+    emit(BasketStateV2());
     // ignore: avoid_print
     print("this is the list : ");
     // ignore: avoid_print

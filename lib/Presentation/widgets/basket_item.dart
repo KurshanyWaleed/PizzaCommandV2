@@ -41,14 +41,14 @@ class BasketItem extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                    element.key.title.toString().length >= 10
+                    element.key.title.toString().length >= 8
                         ? element.key.title.toString().substring(
                                 0, element.key.title.toString().length - 5) +
                             "..."
                         : element.key.title.toString(),
                     style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 13,
                         fontWeight: FontWeight.bold)),
               ],
             ),

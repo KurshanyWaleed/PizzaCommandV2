@@ -74,6 +74,7 @@ class Home extends StatelessWidget {
                           )
                         : Container(
                             child: Badge(
+                              badgeColor: Colors.blue,
                               badgeContent: Text(
                                 BasketStateV2.basketList.length.toString(),
                                 style: const TextStyle(color: Colors.white),

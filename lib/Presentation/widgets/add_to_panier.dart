@@ -58,11 +58,31 @@ class AddToPanier extends StatelessWidget {
                       .addToBasket(obg, state);
                   BlocProvider.of<PaniercounterCubit>(context).reset();
                   context.router.popUntil((route) => route.isFirst);
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('élément ajouté'),
-                    duration: Duration(milliseconds: 500),
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Center(
+                        child: Container(
+                      margin: EdgeInsets.only(top: 20),
+                      child: Image(
+                        image: AssetImage('assets/here3.gif'),
+                        width: 200,
+                      ),
+                    )),
+                    duration: const Duration(seconds: 2),
                     dismissDirection: DismissDirection.horizontal,
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.blue.withOpacity(0.5),
+                  ));
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text(
+                      "L'élément a été ajouté",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    duration: Duration(seconds: 2),
+                    dismissDirection: DismissDirection.horizontal,
+                    backgroundColor: Colors.green,
                   ));
                 },
                 child: Container(
