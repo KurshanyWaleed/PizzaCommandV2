@@ -26,7 +26,7 @@ class BoxItem extends StatelessWidget {
           //"Freind's BOX"
           // BOX x BOX
           case kduoBox:
-            BlocProvider.of<BoxCubit>(context).onChangeBox(kduoBox);
+            // BlocProvider.of<BoxCubit>(context).onChangeBox(kduoBox);
             print("object");
             context.navigateTo(FormuledetailsRouter(
                 children: [FormulesDetails(checkedBox: duobox)]));
@@ -34,11 +34,11 @@ class BoxItem extends StatelessWidget {
             // context.router.push(FormulesDetails(checkedBox: duobox));
             break;
           case kfreindSbox:
-            BlocProvider.of<BoxCubit>(context).onChangeBox(kfreindSbox);
+            //BlocProvider.of<BoxCubit>(context).onChangeBox(kfreindSbox);
             context.router.push(FormulesDetails(checkedBox: freindsBOX));
             break;
           case kboxXbox:
-            BlocProvider.of<BoxCubit>(context).onChangeBox(kboxXbox);
+            // BlocProvider.of<BoxCubit>(context).onChangeBox(kboxXbox);
             context.router.push(FormulesDetails(checkedBox: boxxbox));
             break;
         }

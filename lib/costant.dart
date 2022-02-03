@@ -9,8 +9,8 @@ import 'data/pizza.dart';
 const kduoBox = "Duo BOX";
 const kfreindSbox = "Freind's BOX";
 const kboxXbox = "BOX x BOX";
-
-Map<dynamic, int> duobox = {Pizza: 2, Sandwich: 2, Boissan: 1};
+var duobox = [Pizza, Pizza, Sandwich, Sandwich, Boissan];
+//Map<dynamic, int> duobox = {Pizza: 2, Sandwich: 2, Boissan: 1};
 Map<dynamic, int> freindsBOX = {Pizza: 2, Sandwich: 2, Boissan: 1};
 Map<dynamic, int> boxxbox = {Pizza: 3, Sandwich: 2, Boissan: 1};
 Map<int, dynamic> box = {

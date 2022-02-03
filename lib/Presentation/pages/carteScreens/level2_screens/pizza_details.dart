@@ -153,7 +153,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
                 child: const Text('Suivant '),
                 onPressed: () {
                   context.navigateTo(PizzaCarousel(fromBox: true));
-                  BlocProvider.of<BoxCubit>(context).onChangeBoxArticle(2);
+
                   BlocProvider.of<BoxCubit>(context).addingTotheBasket(pza);
                 }),
           ),
