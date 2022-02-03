@@ -11,7 +11,7 @@ class BoxCubit extends Cubit<BoxState> {
         ));
 
   void downdatetIndex() {
-    state.index <= 0
+    state.index < 0
         ? emit(BoxState(
             isBox: state.isBox,
             index: 0,
@@ -30,6 +30,12 @@ class BoxCubit extends Cubit<BoxState> {
     ));
   }
 
+  void resetIndex() {
+    emit(BoxState(
+      isBox: state.isBox,
+      index: 0,
+    ));
+  }
   // void initIndex(int value) {
   //   state.index = value;
   //   print("index" + state.index.toString());

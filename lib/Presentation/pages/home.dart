@@ -41,24 +41,28 @@ class Home extends StatelessWidget {
                 ? const AutoBackButton(
                     color: Colors.blue,
                   )
-                : BackButton(
-                    color: Colors.blue,
-                    onPressed: () {
-                      context.router.isPathActive(
-                                  'formules/f_details/carouselD') &&
-                              state.index != 1
-                          ? BlocProvider.of<BoxCubit>(context).downdatetIndex()
-                          : print('print');
-                      //
-                      state.index == 1
-                          ? BlocProvider.of<BoxCubit>(context).downdatetIndex()
-                          : print('print');
-                      // !state.index.isOdd
-                      //     ? BlocProvider.of<BoxCubit>(context).downdatetIndex()
-                      //     : print('chay');
-                      context.router.popTop();
-                      // : print('olaaaaaaaaaaaa');
-                    }),
+                : state.index == 0
+                    ? const AutoBackButton(
+                        color: Colors.blue,
+                      )
+                    : BackButton(
+                        color: Colors.blue,
+                        onPressed: () {
+                          context.router
+                                  .isPathActive('formules/f_details/carouselD')
+                              ? BlocProvider.of<BoxCubit>(context)
+                                  .downdatetIndex()
+                              : print('print');
+                          //
+                          // state.index == 1
+                          //     ? BlocProvider.of<BoxCubit>(context).downdatetIndex()
+                          //     : print('print');
+                          // !state.index.isOdd
+                          //     ? BlocProvider.of<BoxCubit>(context).downdatetIndex()
+                          //     : print('chay');
+                          context.router.popTop();
+                          // : print('olaaaaaaaaaaaa');
+                        }),
             actions: const [
               Padding(
                 padding: EdgeInsets.only(right: 20),

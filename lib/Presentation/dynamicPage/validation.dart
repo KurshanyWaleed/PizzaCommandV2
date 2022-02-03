@@ -23,6 +23,7 @@ class Validation extends StatelessWidget {
                     context.router.popUntil((route) => route.isFirst);
                     // context.router.push(const CarteRouter(children: [Carte()]));
                     BlocProvider.of<BoxCubit>(context).isBox(false);
+                    BlocProvider.of<BoxCubit>(context).resetIndex();
                   });
             },
           ))
