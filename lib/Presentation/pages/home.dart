@@ -44,7 +44,9 @@ class Home extends StatelessWidget {
                 : BackButton(
                     color: Colors.blue,
                     onPressed: () {
-                      context.router.isPathActive('formules/f_details/cetailsD')
+                      context.router.isPathActive(
+                                  'formules/f_details/cetailsD') ||
+                              context.router.isPathActive('/formules/f_details')
                           ? BlocProvider.of<BoxCubit>(context).downdatetIndex()
                           : print('print');
                       // !state.index.isOdd

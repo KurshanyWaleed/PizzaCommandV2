@@ -44,6 +44,7 @@ class DetailsD extends StatelessWidget {
                       } else {
                         switch (duobox[state.index].toString()) {
                           case 'Pizza':
+                            // BoxState.boxItems.add(object);
                             context.router.push(CarouselD(data: pizzas));
                             BlocProvider.of<BoxCubit>(context).updatetIndex();
                             break;

@@ -26,6 +26,10 @@ class CarousselWidget extends StatelessWidget {
         color: Colors.blue,
         child: BlocBuilder<BoxCubit, BoxState>(
           builder: (context, state) {
+            print(state.index.toString());
+            print(BoxState.boxItems.isEmpty
+                ? "empty"
+                : BoxState.boxItems[state.index - 1].toString());
             return CarouselSlider(
               options: CarouselOptions(
                   height: MediaQuery.of(context).size.height * .7,
