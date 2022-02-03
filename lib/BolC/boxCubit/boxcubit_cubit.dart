@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:j_pizza_v2/data/pizza.dart';
 
 part 'boxcubit_state.dart';
 
@@ -10,10 +11,15 @@ class BoxCubit extends Cubit<BoxState> {
         ));
 
   void downdatetIndex() {
-    emit(BoxState(
-      isBox: state.isBox,
-      index: state.index - 1,
-    ));
+    state.index <= 0
+        ? emit(BoxState(
+            isBox: state.isBox,
+            index: 0,
+          ))
+        : emit(BoxState(
+            isBox: state.isBox,
+            index: state.index - 1,
+          ));
     print(state.index);
   }
 

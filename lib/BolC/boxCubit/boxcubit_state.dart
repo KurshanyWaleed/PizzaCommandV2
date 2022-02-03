@@ -14,7 +14,9 @@ class BoxState {
   // int articleIndex;
 
   double price = 0;
-  static List<dynamic> boxItems = [];
+  static List<dynamic> boxItems = [
+    Pizza(price: 0, imagepath: "", title: "title", details: "")
+  ];
   BoxState({
     //required this.articleCounter,
     required this.isBox,

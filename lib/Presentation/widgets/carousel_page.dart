@@ -29,7 +29,7 @@ class CarousselWidget extends StatelessWidget {
             print(state.index.toString());
             print(BoxState.boxItems.isEmpty
                 ? "empty"
-                : BoxState.boxItems[state.index - 1].toString());
+                : BoxState.boxItems.toString());
             return CarouselSlider(
               options: CarouselOptions(
                   height: MediaQuery.of(context).size.height * .7,
