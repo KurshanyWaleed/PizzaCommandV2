@@ -26,7 +26,10 @@ class Home extends StatelessWidget {
                       height: 60,
                       image: AssetImage('assets/logo.png'),
                     )
-                  : state.index == 0
+                  : state.index == 0 ||
+                          context.router.isPathActive('/carte') ||
+                          context.router.isPathActive('/pro') ||
+                          context.router.isPathActive('/panier')
                       ? const Image(
                           height: 60,
                           image: AssetImage('assets/logo.png'),
