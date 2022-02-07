@@ -11,14 +11,13 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/cupertino.dart' as _i22;
 import 'package:flutter/material.dart' as _i21;
 
-import '../../data/boissan.dart' as _i27;
-import '../../data/dessert.dart' as _i24;
-import '../../data/entree.dart' as _i25;
-import '../../data/pizza.dart' as _i23;
-import '../../data/sandwiche.dart' as _i26;
+import '../../data/boissan.dart' as _i26;
+import '../../data/dessert.dart' as _i23;
+import '../../data/entree.dart' as _i24;
+import '../../data/pizza.dart' as _i22;
+import '../../data/sandwiche.dart' as _i25;
 import '../dynamicPage/carousel.dart' as _i16;
 import '../dynamicPage/details.dart' as _i17;
 import '../dynamicPage/validation.dart' as _i18;
@@ -54,8 +53,13 @@ class AppRouter extends _i2.RootStackRouter {
           routeData: routeData, child: const _i2.EmptyRouterPage());
     },
     FormulesRouter.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.EmptyRouterPage());
+      return _i2.CustomPage<bool>(
+          routeData: routeData,
+          child: const _i2.EmptyRouterPage(),
+          transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 700,
+          opaque: true,
+          barrierDismissible: false);
     },
     ProRouter.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -123,35 +127,62 @@ class AppRouter extends _i2.RootStackRouter {
           child: _i13.BoissanDetails(key: args.key, boissan: args.boissan));
     },
     FormulesList.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i14.FormulesList());
+      return _i2.CustomPage<bool>(
+          routeData: routeData,
+          child: const _i14.FormulesList(),
+          transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 700,
+          opaque: true,
+          barrierDismissible: false);
     },
     FormuledetailsRouter.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.EmptyRouterPage());
+      return _i2.CustomPage<bool>(
+          routeData: routeData,
+          child: const _i2.EmptyRouterPage(),
+          transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 700,
+          opaque: true,
+          barrierDismissible: false);
     },
     FormulesDetails.name: (routeData) {
       final args = routeData.argsAs<FormulesDetailsArgs>();
-      return _i2.MaterialPageX<dynamic>(
+      return _i2.CustomPage<bool>(
           routeData: routeData,
           child:
-              _i15.FormulesDetails(key: args.key, checkedBox: args.checkedBox));
+              _i15.FormulesDetails(key: args.key, checkedBox: args.checkedBox),
+          transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 700,
+          opaque: true,
+          barrierDismissible: false);
     },
     CarouselD.name: (routeData) {
       final args = routeData.argsAs<CarouselDArgs>();
-      return _i2.MaterialPageX<dynamic>(
+      return _i2.CustomPage<bool>(
           routeData: routeData,
-          child: _i16.CarouselD(key: args.key, data: args.data));
+          child: _i16.CarouselD(key: args.key, data: args.data),
+          transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 700,
+          opaque: true,
+          barrierDismissible: false);
     },
     DetailsD.name: (routeData) {
       final args = routeData.argsAs<DetailsDArgs>();
-      return _i2.MaterialPageX<dynamic>(
+      return _i2.CustomPage<bool>(
           routeData: routeData,
-          child: _i17.DetailsD(key: args.key, object: args.object));
+          child: _i17.DetailsD(key: args.key, object: args.object),
+          transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 700,
+          opaque: true,
+          barrierDismissible: false);
     },
     Validation.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i18.Validation());
+      return _i2.CustomPage<bool>(
+          routeData: routeData,
+          child: const _i18.Validation(),
+          transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 700,
+          opaque: true,
+          barrierDismissible: false);
     },
     ProList.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -286,7 +317,7 @@ class Carte extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.PizzaCarousel]
 class PizzaCarousel extends _i2.PageRouteInfo<PizzaCarouselArgs> {
-  PizzaCarousel({_i22.Key? key, required bool fromBox})
+  PizzaCarousel({_i21.Key? key, required bool fromBox})
       : super(PizzaCarousel.name,
             path: 'pizza', args: PizzaCarouselArgs(key: key, fromBox: fromBox));
 
@@ -296,7 +327,7 @@ class PizzaCarousel extends _i2.PageRouteInfo<PizzaCarouselArgs> {
 class PizzaCarouselArgs {
   const PizzaCarouselArgs({this.key, required this.fromBox});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
   final bool fromBox;
 
@@ -309,7 +340,7 @@ class PizzaCarouselArgs {
 /// generated route for
 /// [_i5.PizzaDetails]
 class PizzaDetails extends _i2.PageRouteInfo<PizzaDetailsArgs> {
-  PizzaDetails({_i22.Key? key, required _i23.Pizza pizza})
+  PizzaDetails({_i21.Key? key, required _i22.Pizza pizza})
       : super(PizzaDetails.name,
             path: ':pizza', args: PizzaDetailsArgs(key: key, pizza: pizza));
 
@@ -319,9 +350,9 @@ class PizzaDetails extends _i2.PageRouteInfo<PizzaDetailsArgs> {
 class PizzaDetailsArgs {
   const PizzaDetailsArgs({this.key, required this.pizza});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
-  final _i23.Pizza pizza;
+  final _i22.Pizza pizza;
 
   @override
   String toString() {
@@ -340,7 +371,7 @@ class DessertCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i7.DessertDetails]
 class DessertDetails extends _i2.PageRouteInfo<DessertDetailsArgs> {
-  DessertDetails({_i22.Key? key, required _i24.Dessert dessert})
+  DessertDetails({_i21.Key? key, required _i23.Dessert dessert})
       : super(DessertDetails.name,
             path: ':dessert',
             args: DessertDetailsArgs(key: key, dessert: dessert));
@@ -351,9 +382,9 @@ class DessertDetails extends _i2.PageRouteInfo<DessertDetailsArgs> {
 class DessertDetailsArgs {
   const DessertDetailsArgs({this.key, required this.dessert});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
-  final _i24.Dessert dessert;
+  final _i23.Dessert dessert;
 
   @override
   String toString() {
@@ -372,7 +403,7 @@ class EntreeCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.EntreeDetails]
 class EntreeDetails extends _i2.PageRouteInfo<EntreeDetailsArgs> {
-  EntreeDetails({_i22.Key? key, required _i25.Entree entree})
+  EntreeDetails({_i21.Key? key, required _i24.Entree entree})
       : super(EntreeDetails.name,
             path: ':entree', args: EntreeDetailsArgs(key: key, entree: entree));
 
@@ -382,9 +413,9 @@ class EntreeDetails extends _i2.PageRouteInfo<EntreeDetailsArgs> {
 class EntreeDetailsArgs {
   const EntreeDetailsArgs({this.key, required this.entree});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
-  final _i25.Entree entree;
+  final _i24.Entree entree;
 
   @override
   String toString() {
@@ -404,7 +435,7 @@ class SandwichesCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i11.SandwichesDetails]
 class SandwichesDetails extends _i2.PageRouteInfo<SandwichesDetailsArgs> {
-  SandwichesDetails({_i22.Key? key, required _i26.Sandwich sandwich})
+  SandwichesDetails({_i21.Key? key, required _i25.Sandwich sandwich})
       : super(SandwichesDetails.name,
             path: ':sandwiches',
             args: SandwichesDetailsArgs(key: key, sandwich: sandwich));
@@ -415,9 +446,9 @@ class SandwichesDetails extends _i2.PageRouteInfo<SandwichesDetailsArgs> {
 class SandwichesDetailsArgs {
   const SandwichesDetailsArgs({this.key, required this.sandwich});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
-  final _i26.Sandwich sandwich;
+  final _i25.Sandwich sandwich;
 
   @override
   String toString() {
@@ -436,7 +467,7 @@ class BoissanCarousel extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i13.BoissanDetails]
 class BoissanDetails extends _i2.PageRouteInfo<BoissanDetailsArgs> {
-  BoissanDetails({_i22.Key? key, required _i27.Boissan boissan})
+  BoissanDetails({_i21.Key? key, required _i26.Boissan boissan})
       : super(BoissanDetails.name,
             path: ':boissan',
             args: BoissanDetailsArgs(key: key, boissan: boissan));
@@ -447,9 +478,9 @@ class BoissanDetails extends _i2.PageRouteInfo<BoissanDetailsArgs> {
 class BoissanDetailsArgs {
   const BoissanDetailsArgs({this.key, required this.boissan});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
-  final _i27.Boissan boissan;
+  final _i26.Boissan boissan;
 
   @override
   String toString() {
@@ -478,7 +509,7 @@ class FormuledetailsRouter extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i15.FormulesDetails]
 class FormulesDetails extends _i2.PageRouteInfo<FormulesDetailsArgs> {
-  FormulesDetails({_i22.Key? key, required dynamic checkedBox})
+  FormulesDetails({_i21.Key? key, required dynamic checkedBox})
       : super(FormulesDetails.name,
             path: '',
             args: FormulesDetailsArgs(key: key, checkedBox: checkedBox));
@@ -489,7 +520,7 @@ class FormulesDetails extends _i2.PageRouteInfo<FormulesDetailsArgs> {
 class FormulesDetailsArgs {
   const FormulesDetailsArgs({this.key, required this.checkedBox});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
   final dynamic checkedBox;
 
@@ -502,7 +533,7 @@ class FormulesDetailsArgs {
 /// generated route for
 /// [_i16.CarouselD]
 class CarouselD extends _i2.PageRouteInfo<CarouselDArgs> {
-  CarouselD({_i22.Key? key, required List<dynamic> data})
+  CarouselD({_i21.Key? key, required List<dynamic> data})
       : super(CarouselD.name,
             path: 'carouselD', args: CarouselDArgs(key: key, data: data));
 
@@ -512,7 +543,7 @@ class CarouselD extends _i2.PageRouteInfo<CarouselDArgs> {
 class CarouselDArgs {
   const CarouselDArgs({this.key, required this.data});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
   final List<dynamic> data;
 
@@ -525,7 +556,7 @@ class CarouselDArgs {
 /// generated route for
 /// [_i17.DetailsD]
 class DetailsD extends _i2.PageRouteInfo<DetailsDArgs> {
-  DetailsD({_i22.Key? key, required dynamic object})
+  DetailsD({_i21.Key? key, required dynamic object})
       : super(DetailsD.name,
             path: 'cetailsD', args: DetailsDArgs(key: key, object: object));
 
@@ -535,7 +566,7 @@ class DetailsD extends _i2.PageRouteInfo<DetailsDArgs> {
 class DetailsDArgs {
   const DetailsDArgs({this.key, required this.object});
 
-  final _i22.Key? key;
+  final _i21.Key? key;
 
   final dynamic object;
 

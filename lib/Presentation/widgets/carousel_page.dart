@@ -26,61 +26,64 @@ class CarousselWidget extends StatelessWidget {
         color: Colors.blue,
         child: BlocBuilder<BoxCubit, BoxState>(
           builder: (context, state) {
-            print(state.index.toString());
-            print(BoxState.boxItems.isEmpty
-                ? "empty"
-                : BoxState.boxItems.toString());
+            // print(state.index.toString());
+            // print(BoxState.boxItems.isEmpty
+            //     ? "empty"
+            //     : BoxState.boxItems.toString());
             return CarouselSlider(
               options: CarouselOptions(
+                  pageSnapping: false,
                   height: MediaQuery.of(context).size.height * .7,
-                  initialPage: 1,
+                  initialPage: state.indexObjectList[state.index] ?? 0,
+                  scrollPhysics: const BouncingScrollPhysics(),
+                  enableInfiniteScroll: false,
+                  pauseAutoPlayOnTouch: true,
                   enlargeCenterPage: true,
-                  enableInfiniteScroll: true,
-                  autoPlay: true),
-              items: dataList
-                  .map((element) => InkWell(
-                        onTap: () {
-                          switch (goToThisRoute) {
-                            case "BoissanDetails":
-                              context.router
-                                  .push(BoissanDetails(boissan: element));
-                              break;
-                            case "PizzaDetails":
-                              context.router.push(PizzaDetails(pizza: element));
-                              break;
-                            case "DessertDetails":
-                              context.router
-                                  .push(DessertDetails(dessert: element));
-                              break;
-                            case "EntreeDetails":
-                              context.router
-                                  .push(EntreeDetails(entree: element));
-                              break;
-                            case "SandwichDetails":
-                              context.router
-                                  .push(SandwichesDetails(sandwich: element));
-                              break;
-                            case "DetailsD":
-                              context.router.push(DetailsD(object: element));
-                              break;
-                            //  case "PizzaDetails":
-                            // context.router.push(PizzaDetails(Pizza: element));
-                            // break;
-                          }
-                          // BlocProvider.of<ScreenIndicatorCubit>(context)
-                          //     .onChangeScreen(9, element.title);
-                          // BlocProvider.of<PizzaforcommandCubit>(context)
-                          //    .onChangeData(element);
-                        },
-                        child: RecommendCard(
-                          image: element.imagepath,
-                          price: element.price,
-                          title: element.title,
-                          details: element.details,
-                          onPress: () => {},
-                        ),
-                      ))
-                  .toList(),
+                  autoPlay: false),
+              items: dataList.map((element) {
+                return InkWell(
+                  onTap: () {
+                    switch (goToThisRoute) {
+                      case "BoissanDetails":
+                        context.router.push(BoissanDetails(boissan: element));
+
+                        break;
+                      case "PizzaDetails":
+                        context.router.push(PizzaDetails(pizza: element));
+
+                        break;
+                      case "DessertDetails":
+                        context.router.push(DessertDetails(dessert: element));
+
+                        break;
+                      case "EntreeDetails":
+                        context.router.push(EntreeDetails(entree: element));
+
+                        break;
+                      case "SandwichDetails":
+                        context.router
+                            .push(SandwichesDetails(sandwich: element));
+
+                        break;
+                      case "DetailsD":
+                        context.router.push(DetailsD(object: element));
+                        BlocProvider.of<BoxCubit>(context)
+                            .getIdexCarousel(dataList, element);
+                        break;
+                    }
+                  },
+                  child: RecommendCard(
+                    isSelected: state.indexObjectList[state.index] != null &&
+                        dataList.indexOf(element) ==
+                            state.indexObjectList[state.index],
+                    image: element.imagepath,
+                    price: element.price,
+                    title: element.title,
+                    details: element.details,
+                    onPress: () => {},
+                  ),
+                );
+              }).toList(),
             );
           },
         ),

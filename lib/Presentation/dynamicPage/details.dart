@@ -38,126 +38,44 @@ class DetailsD extends StatelessWidget {
                 return ElevatedButton(
                     child: const Text("Suivant"),
                     onPressed: () {
-                      //BoxState.boxItems.add(object);
                       if (state.index == duobox.length) {
                         context.router.push(const Validation());
+                        // BlocProvider.of<BoxCubit>(context)
+                        //     .addingTotheBasket(object);
+                        BlocProvider.of<BoxCubit>(context).addingTotheBasketV2(
+                            object, state.index == 1 ? 0 : state.index - 1);
                       } else {
                         switch (duobox[state.index].toString()) {
                           case 'Pizza':
-                            // BoxState.boxItems.add(object);
+                            // BlocProvider.of<BoxCubit>(context)
+                            //     .addingTotheBasket(object);
+                            BlocProvider.of<BoxCubit>(context)
+                                .addingTotheBasketV2(object,
+                                    state.index == 1 ? 0 : state.index - 1);
                             context.router.push(CarouselD(data: pizzas));
                             BlocProvider.of<BoxCubit>(context).updatetIndex();
                             break;
                           case 'Sandwich':
+                            BlocProvider.of<BoxCubit>(context)
+                                .addingTotheBasketV2(object,
+                                    state.index == 1 ? 0 : state.index - 1);
+                            // BlocProvider.of<BoxCubit>(context)
+                            //     .addingTotheBasket(object);
                             context.router.push(CarouselD(data: sandwiches));
                             BlocProvider.of<BoxCubit>(context).updatetIndex();
                             break;
                           case 'Boissan':
+                            BlocProvider.of<BoxCubit>(context)
+                                .addingTotheBasketV2(object,
+                                    state.index == 1 ? 0 : state.index - 1);
+                            // BlocProvider.of<BoxCubit>(context)
+                            //     .addingTotheBasket(object);
                             context.router.push(CarouselD(data: boissans));
                             BlocProvider.of<BoxCubit>(context).updatetIndex();
                             break;
                           default:
                         }
                       }
-                      // if (state.index <= BoxState.liste.length) {
-                      //   switch (BoxState.liste[state.index].toString()) {
-                      //     case 'pizza':
-                      //       context.router.push(CarouselD(data: pizzas));
-                      //       BlocProvider.of<BoxCubit>(context).updatetIndex();
-                      //       break;
-                      //     case 'sandwich':
-                      //       context.router.push(CarouselD(data: sandwiches));
-                      //       BlocProvider.of<BoxCubit>(context).updatetIndex();
-                      //       break;
-                      //     case 'boissan':
-                      //       context.router.push(CarouselD(data: boissans));
-                      //       BlocProvider.of<BoxCubit>(context).updatetIndex();
-                      //       break;
-                      //     default:
-                      //   }
-                      // } else {
-                      //   context.router.push(Validation());
-                      // }
-                      // BoxState.liste;
-                      // state.index == BoxState.liste["Pizza"]
-                      //     ? context.router.push(CarouselD(data: sandwiches))
-                      //     : context.router.push(CarouselD(data: pizzas));
-                      // BoxState.boxItems.add(object);
-                      // BlocProvider.of<BoxCubit>(context).updatetIndex();
-
-                      // print("state index :" + state.index.toString());
-                      // print("taille " + BoxState.boxdetails.length.toString());
-                      // print("this one");
-                      // print(BoxState
-                      //     .boxdetails[state.articleCounter]?.values.first);
-                      // if (BoxState
-                      //         .boxdetails[state.articleCounter]?.values.first !=
-                      //     null) {
-                      //   if ((state.index ==
-                      //           BoxState.boxdetails[state.articleCounter]
-                      //               ?.values.first) &&
-                      //       (BoxState.boxdetails[state.articleCounter]?.values
-                      //               .first !=
-                      //           null)) {
-                      //     BlocProvider.of<BoxCubit>(context).resetIndex();
-                      //     BlocProvider.of<BoxCubit>(context)
-                      //         .incArticleCounter();
-                      //     switch (BoxState
-                      //         .boxdetails[state.articleCounter]!.keys
-                      //         .toString()) {
-                      //       case "(Pizza)":
-                      //         context.router.push(CarouselD(data: pizzas));
-
-                      //         BlocProvider.of<BoxCubit>(context).updatetIndex();
-
-                      //         break;
-                      //       case "(Boissan)":
-                      //         context.router.push(CarouselD(data: boissans));
-
-                      //         BlocProvider.of<BoxCubit>(context).updatetIndex();
-                      //         break;
-                      //       case "(Sandwich)":
-                      //         context.router.push(CarouselD(data: sandwiches));
-                      //         BlocProvider.of<BoxCubit>(context).isBox(true);
-
-                      //         BlocProvider.of<BoxCubit>(context).updatetIndex();
-                      //         break;
-                      //       default:
-                      //     }
-                      //   } else if (state.index !=
-                      //       BoxState.boxdetails[state.articleCounter]!.values
-                      //           .first) {
-                      //     BlocProvider.of<BoxCubit>(context).updatetIndex();
-                      //     switch (BoxState
-                      //         .boxdetails[state.articleCounter]!.keys
-                      //         .toString()) {
-                      //       case "(Pizza)":
-                      //         context.router.push(CarouselD(data: pizzas));
-
-                      //         print("hey");
-
-                      //         break;
-                      //       case "(Boissan)":
-                      //         context.router.push(CarouselD(data: boissans));
-                      //         BlocProvider.of<BoxCubit>(context).isBox(true);
-
-                      //         break;
-                      //       case "(Sandwich)":
-                      //         context.router.push(CarouselD(data: sandwiches));
-                      //         BlocProvider.of<BoxCubit>(context).isBox(true);
-
-                      //         break;
-                      //     }
-                      //   } else if ((BoxState.boxdetails.length <=
-                      //       state.articleCounter)) {
-                      //     context.router.push(const Validation());
-                      //   }
-                      //   //  state.index== ?
-
-                      //   //BoxState.boxdetails[]!.keys.toString()
-                      // } else {
-                      //   context.router.push(const Validation());
-                      // }
                     });
               }))),
     ]);

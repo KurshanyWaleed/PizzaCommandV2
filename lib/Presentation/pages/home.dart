@@ -8,6 +8,7 @@ import 'package:j_pizza_v2/Presentation/routes/app_router.gr.dart';
 import 'package:badges/badges.dart';
 import 'package:j_pizza_v2/BolC/cubitBasket/basket_state.dart';
 import 'package:j_pizza_v2/BolC/cubitBasket/basket_cubit.dart';
+import 'package:j_pizza_v2/costant.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,6 +28,7 @@ class Home extends StatelessWidget {
                       image: AssetImage('assets/logo.png'),
                     )
                   : state.index == 0 ||
+                          context.router.isPathActive('/validationD') ||
                           context.router.isPathActive('/carte') ||
                           context.router.isPathActive('/pro') ||
                           context.router.isPathActive('/panier')

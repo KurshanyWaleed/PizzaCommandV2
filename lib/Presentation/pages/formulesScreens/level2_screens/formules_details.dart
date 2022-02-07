@@ -28,8 +28,8 @@ class FormulesDetails extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: BlocBuilder<BoxCubit, BoxState>(
                   builder: (context, state) {
-                    print("formule details " + state.index.toString());
-                    print("formule details " + duobox.length.toString());
+                    // print("formule details " + state.index.toString());
+                    // print("formule details " + duobox.length.toString());
                     return ElevatedButton(
                         onPressed: () {
                           if (state.index == 4) {

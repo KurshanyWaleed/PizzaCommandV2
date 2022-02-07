@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:j_pizza_v2/Presentation/dynamicPage/carousel.dart';
 import 'package:j_pizza_v2/Presentation/dynamicPage/details.dart';
 import 'package:j_pizza_v2/Presentation/dynamicPage/validation.dart';
@@ -21,6 +21,7 @@ import '../pages/carteScreens/level1_screens/pizza_carousel.dart';
 import '../pages/carteScreens/level1_screens/sandwiches_carousel.dart';
 import '../pages/home.dart';
 
+//CupertinoRoute(page: UsersScreen, fullscreenDialog: true),
 @MaterialAutoRouter(replaceInRouteName: 'Page,Route', routes: [
   AutoRoute(path: '/', page: Home, children:
 // ! bottom bar Item Route
@@ -66,21 +67,46 @@ import '../pages/home.dart';
         ]),
 
     // ! Formules  Item route
-    AutoRoute(
+    CustomRoute<bool>(
+        durationInMilliseconds: 700,
+        transitionsBuilder: TransitionsBuilders.slideLeft,
         path: 'formules',
         name: 'formulesRouter',
         page: EmptyRouterPage,
         children: [
-          AutoRoute(path: '', page: FormulesList),
-          AutoRoute(
+          CustomRoute<bool>(
+            durationInMilliseconds: 700,
+            path: '',
+            page: FormulesList,
+            transitionsBuilder: TransitionsBuilders.slideLeft,
+          ),
+          CustomRoute<bool>(
+              durationInMilliseconds: 700,
+              transitionsBuilder: TransitionsBuilders.slideLeft,
               path: 'f_details',
               page: EmptyRouterPage,
               name: 'formuledetailsRouter',
               children: [
-                AutoRoute(page: FormulesDetails, path: ''),
-                AutoRoute(page: CarouselD, path: 'carouselD'),
-                AutoRoute(page: DetailsD, path: 'cetailsD'),
-                AutoRoute(page: Validation, path: 'validationD'),
+                CustomRoute<bool>(
+                    durationInMilliseconds: 700,
+                    transitionsBuilder: TransitionsBuilders.slideLeft,
+                    page: FormulesDetails,
+                    path: ''),
+                CustomRoute<bool>(
+                    durationInMilliseconds: 700,
+                    transitionsBuilder: TransitionsBuilders.slideLeft,
+                    page: CarouselD,
+                    path: 'carouselD'),
+                CustomRoute<bool>(
+                    durationInMilliseconds: 700,
+                    transitionsBuilder: TransitionsBuilders.slideLeft,
+                    page: DetailsD,
+                    path: 'cetailsD'),
+                CustomRoute<bool>(
+                    durationInMilliseconds: 700,
+                    transitionsBuilder: TransitionsBuilders.slideLeft,
+                    page: Validation,
+                    path: 'validationD'),
               ]),
 
           // AutoRoute(path: 'carousel', page: CarouselD),

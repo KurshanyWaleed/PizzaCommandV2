@@ -154,7 +154,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
                 onPressed: () {
                   context.navigateTo(PizzaCarousel(fromBox: true));
 
-                  BlocProvider.of<BoxCubit>(context).addingTotheBasket(pza);
+                  // BlocProvider.of<BoxCubit>(context).addingTotheBasket(pza);
                 }),
           ),
           BlocBuilder<BoxCubit, BoxState>(

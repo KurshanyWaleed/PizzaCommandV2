@@ -11,16 +11,19 @@ class BoxState {
   //int articleCounter;
 
   int index;
+
+  Map<int, int> indexObjectList = {0: 0};
   // int articleIndex;
 
   double price = 0;
-  static List<dynamic> boxItems = [
-    Pizza(price: 0, imagepath: "", title: "title", details: "")
-  ];
+  static List<dynamic> boxItems = [];
+  static List<dynamic> boxItemsToBasket = [];
   BoxState({
     //required this.articleCounter,
     required this.isBox,
     required this.index,
+    required this.indexObjectList,
+
     // required this.articleIndex
   });
 }

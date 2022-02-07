@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:j_pizza_v2/BolC/boxCubit/boxcubit_cubit.dart';
 
 class RecommendCard extends StatelessWidget {
   const RecommendCard(
@@ -7,98 +11,101 @@ class RecommendCard extends StatelessWidget {
       required this.title,
       required this.details,
       required this.price,
+      required this.isSelected,
       required this.onPress})
       : super(key: key);
 
   final String image, title, details;
   final double price;
+  final bool isSelected;
   //final int index;
   final void Function() onPress;
 
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Card(
+    return Card(
+
+        // shadowColor: isSelected ? Colors.green : null,
         clipBehavior: Clip.antiAlias,
-        elevation: 16,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
+        elevation: 50,
+        shape: RoundedRectangleBorder(
+            side: isSelected
+                ? const BorderSide(color: Colors.redAccent, width: 5.0)
+                : BorderSide.none,
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(8), topRight: Radius.circular(8))),
         child: SizedBox(
-          height: 1000,
-          child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Image.asset(
-                      image,
-                      width: 450,
-                      height: 250,
-                      fit: BoxFit.cover,
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
+            height: 1000,
+            child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
                     children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                            fontStyle: FontStyle.italic),
+                      Image.asset(
+                        image,
+                        width: 450,
+                        height: 250,
+                        fit: BoxFit.cover,
                       ),
-                      const SizedBox(height: 5),
-                      Container(
-                          margin: const EdgeInsets.all(10),
-                          padding: const EdgeInsets.all(0),
-                          child: Text(
-                            details,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontSize: 15,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          )),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                        price.toString() + " DT",
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      // Container(
-                      //   height: 50,
-                      //   margin: const EdgeInsets.all(10),
-                      //   padding: const EdgeInsets.all(8),
-                      //   decoration: BoxDecoration(
-                      //       color: Colors.blue,
-                      //       borderRadius: BorderRadius.circular(8)),
-                      //   // child: TextButton(
-                      //   //     onPressed: () {},
-                      //   //     child: const Center(
-                      //   //       child: Text(
-                      //   //         "Commender",
-                      //   //         style: TextStyle(color: Colors.white),
-                      //   //       ),
-                      //   //     )),
                     ],
                   ),
-                ),
-              ]),
-        ),
-      ),
-    );
+                  //here
+                  BlocBuilder<BoxCubit, BoxState>(builder: (context, state) {
+                    print(state.indexObjectList[state.index].toString());
+                    return Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          Text(
+                            title,
+                            style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red,
+                                fontStyle: FontStyle.italic),
+                          ),
+                          const SizedBox(height: 5),
+                          Container(
+                              margin: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(0),
+                              child: Text(
+                                details,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            price.toString() + " DT",
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          isSelected
+                              ? const Text(
+                                  "Sélectionné",
+                                  style: TextStyle(
+                                      color: Colors.redAccent,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              : const Text('')
+                        ],
+                      ),
+                    );
+                  }),
+                ])));
   }
 // ignore: camel_case_types
 

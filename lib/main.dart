@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => BoxCubit())
       ],
       child: MaterialApp.router(
+          //   builder: ,
           debugShowCheckedModeBanner: false,
           title: 'Joes Pizza',
           routeInformationParser: _appRouter.defaultRouteParser(),
